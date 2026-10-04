@@ -1,47 +1,44 @@
+//Imports Header, Content and Footer from other files
 import Header from './components/Header';
 import Content from './components/Content';
 import Footer from './components/Footer';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container';
+//Imports nav, navbar and container from react bootstrap
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+//Imports components needed for routing to pages
 import { BrowserRouter } from 'react-router-dom';
-
-import { Routes, Route } from 'react-router-dom'
-import NavigationBar from './components/NavigationBar.jsx'
+import { Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 function App() {
-
   return (
-   <div>
-    <BrowserRouter>
+    <div>
+      <BrowserRouter> //Allows the app to do routing
 
-    <Navbar bg="primary" data-bs-theme="dark">
+        <Navbar bg="primary" data-bs-theme="dark"> //Makes the nav bar
           <Container>
             <Navbar.Brand href="/">Navbar</Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/read">Read</Nav.Link>
+
+            <Nav className="me-auto"> //Has the nav links
+              <Nav.Link href="/">Home</Nav.Link> 
+              <Nav.Link href="/read">Read</Nav.Link> //Links to each page
               <Nav.Link href="/create">Create</Nav.Link>
             </Nav>
           </Container>
         </Navbar>
 
-        <Routes>
-          <Route path='/' element={<Content></Content>}></Route>
-          <Route path="/Header" element={<Header></Header>} />
-          <Route path="/Footer" element={<Footer></Footer>} />
+        <Routes> //Contains the routes for the app
+          <Route path="/" element={<Content />} /> //Displays content on home page
+          <Route path="/read" element={<Header />} /> //Displays header on read page
+          <Route path="/create" element={<Content />} /> //Displays content on create page
         </Routes>
-        {// <Header></Header>
-   // <Content></Content>
-   // <Footer></Footer>
-   }
-  </BrowserRouter>
 
-   
-  
-   </div>
+        <Footer />
+
+      </BrowserRouter>
+    </div>
   );
 }
 
-export default App
+export default App; //Exports app component
